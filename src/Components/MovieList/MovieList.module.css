@@ -1,0 +1,17 @@
+.MoviesList {
+  list-style: none;
+}
+
+.MoviesListItems {
+  margin-bottom: 10px;
+}
+
+.MoviesListItemsLink {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+}
+
+.MoviesListItemsLink:hover {
+  color: maroon;
+}

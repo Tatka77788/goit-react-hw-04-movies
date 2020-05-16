@@ -1,0 +1,22 @@
+.Form {
+  padding-top: 10px;
+}
+
+.Input {
+  width: 200px;
+  font-size: 16px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border: solid 1px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.ButtonForm {
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  border: solid 1px;
+  background-color: linen;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

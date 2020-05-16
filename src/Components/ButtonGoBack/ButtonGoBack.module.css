@@ -1,0 +1,16 @@
+.ButtonGoBack {
+  border-radius: 5px;
+  outline: none;
+  border: 0.5px solid rgb(221, 220, 220);
+  background-color: white;
+  padding: 5px;
+  width: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.ButtonGoBack::before {
+  content: '\2190';
+}

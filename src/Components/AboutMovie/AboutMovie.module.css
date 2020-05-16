@@ -1,0 +1,15 @@
+.MovieInfoWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-shadow: 0 4px 2px -2px #d3d3d3;
+    padding-bottom: 5px;
+  }
+  
+  .MoviePoster {
+    width: 260px;
+  }
+  
+  .MovieInfo {
+    margin-left: 20px;
+  }
