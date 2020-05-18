@@ -59,7 +59,7 @@ export default class MoviesPage extends Component {
     return (
       <>
         <SearchBar onSubmit={this.handleSubmit} />
-        {movies.length ? <MoviesList movies={movies} /> : null}
+        {movies.length > 0 && <MoviesList movies={movies} />}
       </>
     );
   }

@@ -19,10 +19,7 @@ export default class Cast extends Component {
 
     moviesApi
       .getMovieCast(id)
-      .then(({ cast }) => this.setState({ cast: castMapper(cast) }))
-      .catch(error => {
-        console.log(error);
-      });
+      .then(({ cast }) => this.setState({ cast: castMapper(cast) }));
   }
 
   render() {

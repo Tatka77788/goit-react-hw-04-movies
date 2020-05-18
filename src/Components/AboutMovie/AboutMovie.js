@@ -39,7 +39,12 @@ AboutMovie.propTypes = {
   release_date: PropTypes.string.isRequired,
   vote_average: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default AboutMovie;
