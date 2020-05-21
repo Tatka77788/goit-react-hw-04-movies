@@ -13,6 +13,7 @@ import AboutMovie from '../Components/AboutMovie/AboutMovie';
 import AdditionalInfo from '../Components/AdditionalInfo/AdditionalInfo';
 import Cast from '../Components/Cast/Cast';
 import Reviews from '../Components/Reviews/Reviews';
+import ErrorNotification from '../Components/ErrorNotification/ErrorNotification';
 
 const queryString = require('query-string');
 
@@ -20,6 +21,7 @@ export default class MoviesDetailsPage extends Component {
   state = {
     movie: null,
     query: '',
+    error: null,
   };
 
   componentDidMount() {
@@ -29,7 +31,7 @@ export default class MoviesDetailsPage extends Component {
       .getMovieWithId(id)
       .then(movie => this.setState({ movie }))
       .catch(error => {
-        console.log(error);
+        this.setState({ error });
       });
 
     if (this.props.location.state) {
@@ -79,13 +81,14 @@ export default class MoviesDetailsPage extends Component {
   };
 
   render() {
-    const { movie } = this.state;
+    const { movie, error } = this.state;
     const { match } = this.props;
     return (
       <>
         {movie && (
           <>
             <ButtonGoBack onGoback={this.handleGoback} />
+            {error && <ErrorNotification text={error.message} />}
             <AboutMovie {...movie} />
             <AdditionalInfo
               id={movie.id}

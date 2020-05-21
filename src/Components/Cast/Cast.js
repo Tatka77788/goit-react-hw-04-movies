@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import * as moviesApi from '../../Services/MoviesApi';
 import castMapper from '../../Helpers/castMapper';
 import CastList from '../CastList/CastList';
+import ErrorNotification from '../ErrorNotification/ErrorNotification';
 
 export default class Cast extends Component {
   static propTypes = {
@@ -12,6 +13,7 @@ export default class Cast extends Component {
 
   state = {
     cast: [],
+    error: null,
   };
 
   componentDidMount() {
@@ -19,12 +21,20 @@ export default class Cast extends Component {
 
     moviesApi
       .getMovieCast(id)
-      .then(({ cast }) => this.setState({ cast: castMapper(cast) }));
+      .then(({ cast }) => this.setState({ cast: castMapper(cast) }))
+      .catch(error => {
+        this.setState({ error });
+      });
   }
 
   render() {
-    const { cast } = this.state;
+    const { cast, error } = this.state;
     const { onClick } = this.props;
-    return <CastList cast={cast} onClick={onClick} />;
+    return (
+      <>
+        {error && <ErrorNotification text={error.message} />}
+        <CastList cast={cast} onClick={onClick} />;
+      </>
+    );
   }
 }

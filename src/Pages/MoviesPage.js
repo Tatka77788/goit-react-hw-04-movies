@@ -9,6 +9,7 @@ import * as moviesApi from '../Services/MoviesApi';
 import moviesMapper from '../Helpers/moviesMapper';
 import SearchBar from '../Components/SearchBar/SearchBar';
 import MoviesList from '../Components/MovieList/MovieList';
+import ErrorNotification from '../Components/ErrorNotification/ErrorNotification';
 
 const queryString = require('query-string');
 
@@ -16,6 +17,7 @@ export default class MoviesPage extends Component {
   state = {
     movies: [],
     query: '',
+    error: null,
   };
 
   componentDidMount() {
@@ -46,7 +48,7 @@ export default class MoviesPage extends Component {
           : this.setState({ movies: moviesMapper(data.results) });
       })
       .catch(error => {
-        console.log(error);
+        this.setState({ error });
       });
   };
 
@@ -55,10 +57,11 @@ export default class MoviesPage extends Component {
   };
 
   render() {
-    const { movies } = this.state;
+    const { movies, error } = this.state;
     return (
       <>
         <SearchBar onSubmit={this.handleSubmit} />
+        {error && <ErrorNotification text={error.message} />}
         {movies.length > 0 && <MoviesList movies={movies} />}
       </>
     );
